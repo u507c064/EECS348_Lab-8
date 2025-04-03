@@ -86,7 +86,7 @@ void Matrix::set_value(std::size_t i, std::size_t j, int n) {
 //Function called "get_value" which returns the value at given element in the matrix.
 int Matrix::get_value(std::size_t i, std::size_t j) const {
     //Check to see if the index of the row and column are within the matrix.
-    if (i >= data.size() || j >= data.size()) {
+    if (i >= matrix.size() || j >= matrix.size()) {
         //If they are not, then throw an error displaying "Error: Index not within bounds".
         throw std::out_of_range("Error: Index not within bounds");
     }
