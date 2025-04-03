@@ -67,7 +67,7 @@ Matrix Matrix::operator*(const Matrix &rhs) const {
                 //Access the matrix of result and set it to the multiplication of the matrix and the matrix passed in.
                 //This is done by first accessing the individual rows and columns ([i][j]).
                 //Then storing the elements with the operator (=).
-                result.matrix[i][j] = matrix[i][j] * rhs.matrix[i][j];
+                result.matrix[i][j] = matrix[i][k] * rhs.matrix[k][j];
             }
         }
     }
