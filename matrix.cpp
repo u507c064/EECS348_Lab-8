@@ -91,7 +91,7 @@ int Matrix::get_value(std::size_t i, std::size_t j) const {
         throw std::out_of_range("Error: Index not within bounds");
     }
     //Access the individual matrix element and return it.
-    return data[i][j];
+    return matrix[i][j];
 }
 
 //Function called "get_size" which returns the size of the matrix.
