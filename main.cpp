@@ -3,6 +3,43 @@
 #include <fstream>
 #include <vector>
 
+//Function called "read_matrices" that reads in matrices from a file.
+//Parameters: String variable called "filename" and two Matrix objects called "mat1" and "mat2".
+void Matrix::read_matrices(const std::string &filename, Matrix &mat1, Matrix &mat2) {
+    //First open the file with ifstream function with the filename passed in.
+    std::ifstream file(filename);
+    //If there is an error with opening the file, then throw an error.
+    if (!file) {
+        //Display "Error opening file: " with the filename.
+        std::cerr << "Error opening file: " << filename << std::endl;
+        //Exits the program. 
+        return;
+    }
+    
+    //Variable called "N" to read in the first value from the file.
+    std::size_t N;
+    //Reads the first value.
+    file >> N;
+    //Initialize the first two matrices with NxN matrices filled with zeros.
+    std::vector<std::vector<int>> data1(N, std::vector<int>(N));
+    std::vector<std::vector<int>> data2(N, std::vector<int>(N));
+    
+    //For loop that passes in the data from the file and stores it in the first matrix (data1).
+    for (std::size_t i = 0; i < N; ++i) //Iterate through the rows.
+        for (std::size_t j = 0; j < N; ++j) //Iterate through the columns.
+            file >> data1[i][j]; //Read in the data from the file and store the data in their respective element.
+    
+    //For loop that passes in the data from the file and stores it in the second matrix (data2).
+    for (std::size_t i = 0; i < N; ++i) //Iterate through the rows.
+        for (std::size_t j = 0; j < N; ++j) //Iterate through the columns.
+            file >> data2[i][j]; //Read in the data from the file and store the data in their respective element.
+    
+    //Sets matrix 1 (mat1) to the object Matrix(data1) (Which is the matrix now filled with data). 
+    mat1 = Matrix(data1);
+    //Sets matrix 2 (mat2) to the object Matrix(data2) (Which is the matrix now filled with data).
+    mat2 = Matrix(data2);
+}
+
 int main(int argc, char *argv[]) {
     //String variable called "filename".
     std::string filename;
