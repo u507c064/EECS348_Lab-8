@@ -50,24 +50,15 @@ Matrix Matrix::operator+(const Matrix &rhs) const {
 Matrix Matrix::operator*(const Matrix &rhs) const {
     //Variable called "N" and is set to the matrix's size.
     std::size_t N = matrix.size();
-    //Matrix object "result" with size N to store the result of the operation.
+    //Matrix object called "result" to store the result of the operation.
     Matrix result(N);
 
-    //Iterate through the matrix to enable the multiplication of all elements.
-    //First go through the rows.
-    for (std::size_t i = 0; i < N; i++)
-    {
-        //Then iterate through the columns.
-        for (std::size_t j = 0; j < N; j++)
-        {
-            //Then iterate through the row of the first matrix and the column of the matrix passed in.
-            //This is to perform the dot operation between the elements.
-            for(std::size_t k = 0; k < N; k++)
-            {
-                //Access the matrix of result and set it to the multiplication of the matrix and the matrix passed in.
-                //This is done by first accessing the individual rows and columns ([i][j]).
-                //Then storing the elements with the operator (=).
-                result.matrix[i][j] = matrix[i][k] * rhs.matrix[k][j];
+    //Iterating through the matrices to store the correct elements in the result matrix.
+    for (std::size_t i = 0; i < N; ++i) {
+        for (std::size_t j = 0; j < N; ++j) {
+            result.data[i][j] = 0; 
+            for (std::size_t k = 0; k < N; ++k) {
+                result.matrix[i][j] += matrix[i][k] * rhs.matrix[k][j];
             }
         }
     }
