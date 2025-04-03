@@ -79,18 +79,17 @@ int main(int argc, char *argv[]) {
     }
     
     //Matrix multiplication problem.
-    //Displays "Matrix Multiplication Result: ".
-    std::cout << "Matrix Multiplication Result:" << std::endl;
-    //Creates a Matrix object called "product" to store the result of the multiplication between mat1 and mat2.
-    Matrix product = mat1 * mat2;
-    //Uses the print_matrix property of product to display the resulting matrix.
-    product.print_matrix();
-
+    //First a check to see if the matrices are the same size.
+    //This is done by accessing both matrice's get_size property.
+    //If they are the same size, then perform multiplication.
     if (mat1.get_size() == mat2.get_size()) {
+        //Displays "Matrix Multiplication Result: ".
         std::cout << "Matrix Multiplication Result:" << std::endl;
+        //Creates a Matrix object called "product" to store the result of the multiplication between mat1 and mat2.
         Matrix product = mat1 * mat2;
+        //Uses the print_matrix property of product to display the resulting matrix.
         product.print_matrix();
-    } else {
+    } else { //Else, display "Error Matrices must be the same size for multiplication."
         std::cerr << "Error: Matrices must be compatible for multiplication." << std::endl;
     }
     
