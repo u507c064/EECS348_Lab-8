@@ -56,7 +56,7 @@ Matrix Matrix::operator*(const Matrix &rhs) const {
     //Iterating through the matrices to store the correct elements in the result matrix.
     for (std::size_t i = 0; i < N; ++i) {
         for (std::size_t j = 0; j < N; ++j) {
-            result.data[i][j] = 0; 
+            result.matrix[i][j] = 0; 
             for (std::size_t k = 0; k < N; ++k) {
                 result.matrix[i][j] += matrix[i][k] * rhs.matrix[k][j];
             }
