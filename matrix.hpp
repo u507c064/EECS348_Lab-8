@@ -2,9 +2,12 @@
 #define __MATRIX_HPP__
 
 #include <cstdint>
+#include <string>
 #include <vector>
 
 class Matrix {
+private:
+    std:vector<std::vector<int> matrix;
 public:
     Matrix(std::size_t N);
     Matrix(std::vector<std::vector<int>> nums);

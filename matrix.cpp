@@ -17,10 +17,7 @@ Matrix::Matrix(size_t N) {
 
 //Constructor that initilizes the matrix with the values passed in from the parameter.
 //The parameter is the vector of integers called "nums".
-Matrix::Matrix(std::vector<std::vector<int>> nums) {
-    //Initialize the matrix with the values passed in from the parameter using moves function.
-    matrix = std::move(nums);
-}
+Matrix::Matrix(std::vector<std::vector<int>> nums) : matrix(std::move(nums)) {}
 
 // e.g. for a member function:
 
