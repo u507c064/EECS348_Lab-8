@@ -152,7 +152,7 @@ void Matrix::swap_cols(std::size_t c1, std::size_t c2) {
             //To access the columns, the row must be identified for each column.
             //This is represented in the arguments of the swap function (matrix[i][c1]).
             //After the row has been identified, then the swap can occur.
-            std::swap(matrixp[i][c1], matrix[i][c2]);
+            std::swap(matrix[i][c1], matrix[i][c2]);
         }
     }
 }
