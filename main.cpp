@@ -5,7 +5,7 @@
 
 //Function called "read_matrices" that reads in matrices from a file.
 //Parameters: String variable called "filename" and two Matrix objects called "mat1" and "mat2".
-void Matrix::read_matrices(const std::string &filename, Matrix &mat1, Matrix &mat2) {
+void read_matrices(const std::string &filename, Matrix &mat1, Matrix &mat2) {
     //First open the file with ifstream function with the filename passed in.
     std::ifstream file(filename);
     //If there is an error with opening the file, then throw an error.
@@ -104,28 +104,34 @@ int main(int argc, char *argv[]) {
     std::size_t r1, r2;
     //Displays "Enter two row indices to swap in Matrix 1: ".
     std::cout << "Enter two row indices to swap in Matrix 1: ";
-    //Stores the information from the keyboard in r1 and r2.
-    std::cin >> r1 >> r2;
-    //Uses mat1's swap_rows property with r1 and r2 passed in as arguments.
-    mat1.swap_rows(r1, r2);
-    //Displays "Matrix 1 after row swap: ".
-    std::cout << "Matrix 1 after row swap:" << std::endl;
-    //Uses mat1's print_matrix property to display the matrix.
-    mat1.print_matrix();
+    if (!(std::cin >> r1 >> r2)) {
+        std::cerr << "Invalid input for row indices." << std::endl;
+        return 1;
+    }
+    if (r1 < mat1.get_size() && r2 < mat1.get_size()) {
+        mat1.swap_rows(r1, r2);
+        std::cout << "Matrix 1 after row swap:" << std::endl;
+        mat1.print_matrix();
+    } else {
+        std::cerr << "Error: Row indices out of bounds." << std::endl;
+    }
     
     //Swap columns problem.
     //Variables called "c1" and "c2" for column indices.
     std::size_t c1, c2;
     //Displays "Enter two column indices to swap in Matrix 1: ".
     std::cout << "Enter two column indices to swap in Matrix 1: ";
-    //Stores the information from the keyboard in c1 and c2.
-    std::cin >> c1 >> c2;
-    //Uses mat1's swap_cols property with c1 and c2 passed in as arguments.
-    mat1.swap_cols(c1, c2);
-    //Displays "Matrix 1 after column swap: ".
-    std::cout << "Matrix 1 after column swap:" << std::endl;
-    //Uses mat1's print_matrix property to display the matrix.
-    mat1.print_matrix();
+    if (!(std::cin >> c1 >> c2)) {
+        std::cerr << "Invalid input for column indices." << std::endl;
+        return 1;
+    }
+    if (c1 < mat1.get_size() && c2 < mat1.get_size()) {
+        mat1.swap_cols(c1, c2);
+        std::cout << "Matrix 1 after column swap:" << std::endl;
+        mat1.print_matrix();
+    } else {
+        std::cerr << "Error: Column indices out of bounds." << std::endl;
+    }
     
     //Update matrix value problem.
     //Variables called "row" and "col" to enter the row and column to store the element in.

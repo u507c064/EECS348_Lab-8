@@ -5,7 +5,7 @@ SRC = main.cpp matrix.cpp
 HPP = matrix.hpp
 MATRIX = matrix_program
 
-all: $(TARGET)
+all: $(MATRIX)
 
 $(MATRIX): $(SRC) $(HPP)
 	$(CPP) $(CPPFLAGS) -o $(MATRIX) $(SRC)
